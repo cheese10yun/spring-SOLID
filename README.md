@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.com/cheese10yun/spring-SOLID.svg?branch=master)](https://travis-ci.com/cheese10yun/spring-SOLID)
+[![Coverage Status](https://coveralls.io/repos/github/cheese10yun/spring-SOLID/badge.svg?branch=master)](https://coveralls.io/github/cheese10yun/spring-SOLID?branch=master)
+[![HitCount](http://hits.dwyl.io/cheese10yun/spring-SOLID.svg)](http://hits.dwyl.io/cheese10yun/spring-SOLID)
+
 # SOLID
 
 해당 프로젝트는 객체지향 SOLID 적용 전, 적용 후 예제 코드를 통해서 
@@ -36,6 +40,11 @@ DIP 설명 블라블라...
 상위 수준 정책은 하위 수준 세부 정보에 의존해서는 안됩니다.
 
 ## 적용전
+
+<p align="center">
+    <img src="https://i.imgur.com/Zkykv9m.png">
+</p>
+
 ```java
 class PaymentController {
     @RequestMapping(value = "/dip/anti/payment", method = RequestMethod.POST)
@@ -49,10 +58,6 @@ class ShinhanCardPaymentService {
     }   
 }
 ```
-
-<p align="center">
-    <img src="https://i.imgur.com/z2nxBc6.png">
-</p>
 
 **PaymentController의 상위 수준의 정책이 ShinhanCardPaymentService이 하위 수준 세부 정보에 의존 하고 있습니다.**
 

@@ -53,7 +53,7 @@
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <configuration>
-                    <repoToken></repoToken>
+                    <repoToken>qLElnlAkIz2OQSOdbjqDgHYrDxXgEgQp1</repoToken>
                 </configuration>
             </plugin>
 
