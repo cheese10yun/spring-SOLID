@@ -13,6 +13,14 @@ public class WooriCardPaymentService implements CardPaymentService {
 
     @Override
     public void pay(CardPaymentDto.PaymentRequest req) {
-        wooriCardApi.pay(req);
+        final WooriCardDto.PaymentRequest paymentRequest = buildPayment(req);
+        wooriCardApi.pay(paymentRequest);
+    }
+
+    private WooriCardDto.PaymentRequest buildPayment(CardPaymentDto.PaymentRequest req) {
+        return WooriCardDto.PaymentRequest.builder()
+                .number(req.getCardNumber())
+                .CVS(req.getCsv())
+                .build();
     }
 }
