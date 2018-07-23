@@ -29,11 +29,12 @@ public class WooriCardApiTest {
 
         //given
 
-        final CardPaymentDto.PaymentRequest paymentRequest = CardPaymentDto.PaymentRequest.builder()
-                .cardNumber("card..")
-                .csv("csv")
-                .type(CardType.WOORI)
+        final WooriCardDto.PaymentRequest paymentRequest = WooriCardDto.PaymentRequest.builder()
+                .number("card..")
+                .CVS("CSV")
                 .build();
+
+
         //when
         wooriCardApi.pay(paymentRequest);
 

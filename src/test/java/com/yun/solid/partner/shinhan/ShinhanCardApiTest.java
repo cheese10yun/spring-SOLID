@@ -27,13 +27,12 @@ public class ShinhanCardApiTest {
     @Test
     public void pay() {
 
-        final CardPaymentDto.PaymentRequest paymentRequest = CardPaymentDto.PaymentRequest.builder()
-                .cardNumber("card..")
-                .csv("csv")
-                .type(CardType.SHINHAN)
+        final ShinhanCardDto.PaymentRequest request = ShinhanCardDto.PaymentRequest.builder()
+                .shinhanCardNumber("card")
+                .cvc("csv")
                 .build();
 
-        shinhanCardApi.pay(paymentRequest);
+        shinhanCardApi.pay(request);
 
 
         verify(restTemplate, atLeastOnce()).postForObject(anyString(), any(), any());
