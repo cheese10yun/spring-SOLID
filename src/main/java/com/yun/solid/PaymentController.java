@@ -3,6 +3,7 @@ package com.yun.solid;
 import com.yun.solid.partner.payment.CardPaymentDto;
 import com.yun.solid.partner.payment.CardPaymentFactory;
 import com.yun.solid.partner.payment.CardPaymentService;
+import com.yun.solid.partner.shinhan.ShinhanCardPaymentService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,5 +20,13 @@ public class PaymentController {
     public void pay(@RequestBody CardPaymentDto.PaymentRequest req) {
         final CardPaymentService cardPaymentService = cardPaymentFactory.getType(req.getType());
         cardPaymentService.pay(req);
+    }
+
+    @RequestMapping(value = "/overseas-payment", method = RequestMethod.POST)
+    public void payOverseas(@RequestBody CardPaymentDto.PaymentRequest req) {
+        final CardPaymentService cardPaymentService = cardPaymentFactory.getType(req.getType());
+        if (cardPaymentService instanceof ShinhanCardPaymentService) {
+            cardPaymentService.payOverseas(req);
+        }
     }
 }

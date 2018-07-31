@@ -17,6 +17,12 @@ public class ShinhanCardPaymentService implements CardPaymentService {
         shinhanCardApi.pay(paymentRequest);
     }
 
+    @Override
+    public void payOverseas(CardPaymentDto.PaymentRequest req) {
+        final ShinhanCardDto.PaymentRequest paymentRequest = buildPayment(req);
+        shinhanCardApi.pay(paymentRequest);
+    }
+
     private ShinhanCardDto.PaymentRequest buildPayment(CardPaymentDto.PaymentRequest req) {
         return ShinhanCardDto.PaymentRequest.builder()
                 .shinhanCardNumber(req.getCardNumber())
