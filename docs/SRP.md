@@ -13,13 +13,13 @@
 **다른 SOLID 원칙 정리 한글 보다 제 개인적인 생각이 많이 들어간 설명이라서 최대한 비판적인 시각으로 봐주시면 감사하겠습니다.**
 
 
-# 용어 풀이
+## 용어 풀이
 
-## 책임이란 ?
+### 책임이란 ?
 
-## Actor 란 ?
+### Actor 란 ?
 
-# 요구사항
+## 요구사항
 
 * 카드 결제 시스템이 있다.
 * 현재 국내 결제를 지원하는 카드는 신한, 우리 카드가 있다.
@@ -30,7 +30,7 @@
     * 지속해서 카드사가 추가된다.
 
 
-# 기존 국내 카드 결제의 SRP
+## 기존 국내 카드 결제의 SRP
 
 <p align="center">
     <img src="https://i.imgur.com/TdGYl8n.png">
@@ -73,7 +73,7 @@ public class WooriCardPaymentService implements CardPaymentService {
 
 **여기서 Actor를 단순히 사용자로 바라보면 안 되고 Actor는 그 행위(국내 결제)를 하는 행위자로 봐야 한다고 생각합니다. 그리고 단일 책임이라는 것은 단일 Actor를 뜻한다고 생각합니다.** 이 부분은 아래에서 추가로 설명하겠습니다.
 
-# 추가될 해외 카드 결제의 SRP(미준수)
+## 추가될 해외 카드 결제의 SRP(미준수)
 
 ![](https://i.imgur.com/DyLl9Fh.png)
 
@@ -106,7 +106,7 @@ public class WooriCardPaymentService implements CardPaymentService {
 다시 SRP로 넘어가서 
 
 
-## 책임이란 변화에 대한 것
+### 책임이란 변화에 대한 것
 
 국내 결제에서 해외 결제라는 책임이 하나 더 생긴 것입니다. 그렇게 두 개의 책임이 생겼고 그 결과 두 개의 Actor가 생긴 것이라고 생각합니다. (위에서 언급한 단일 책임 = 단일 Actor) 이로써 클래스의 책임을 나누는 작업이 필요해집니다.
 
@@ -118,11 +118,12 @@ public class WooriCardPaymentService implements CardPaymentService {
 
 
 
-# 추가될 해외 카드 결제의 SRP(준수)
+## 추가될 해외 카드 결제의 SRP(준수)
 
 ![](https://i.imgur.com/1vc5En5.png)
 
 카드 파트너사의 해외 결제 여부로 더이상 PaymentService에서 국내 결제와, 해외 결제를 처리를 못하게 되었습니다. 그렇다면 책임을 분리시키고 그것을 인터페이스로 바라보게 하여 앞으로 해외 결제 카드추가시 확장에 열려있게 할 수 있습니다.
 
 
-
+## 결론
+SOLID에서 가장 이해하기 어려운 개념이 SRP라고 생각합니다. 관련자료도 읽어봐도 명확한 이해가 어려워서 저 나름의 결론을 정리한 글입니다. 때문에 다른 원칙에 비해서 제 주관적인 해석들이 많아 잘못된 부분도 있을 수 있습니다.
