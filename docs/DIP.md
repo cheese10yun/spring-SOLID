@@ -8,13 +8,13 @@
 
 대표적인 DIP 핵심 키워드입니다. 단어 하나하나 풀이하고 아래의 예제를 통해서 다시 이해하는 과정을 통해서 설명하겠습니다. 다음 예제는 아래와 같은 요구사항이 있습니다.
 
-# 요구사항
+## 요구사항
 * 카드 결제 시스템을 만들어야 한다.
 * 현재 지원하는 카드는 신한 카드 하나뿐이다.
 * 이제 우리 카드 결제가 추가되어 구현해야 한다.
 * 앞으로도 카드는 지속해서 추가될 예정이다.
 
-# 용어 풀이
+## 용어 풀이
 
 > ***상위 모듈 이란 ?***
 >
@@ -28,7 +28,7 @@
 >
 > 추상 타입은 인터페이스, 추상화 클래스를 의미합니다. 상위 정책이 하위 정책에 의존하지 않고 추상 타입에 의존하라는 것은 **카드 결제라는 상위 정책이 신한 카드 결제라는 하위 정책을 의존하지 말고 추상 클래스, 인터페이스를 의존하라는 것입니다.**
 
-# DIP 준수하지 않은 코드
+## DIP 준수하지 않은 코드
 
 <p align="center">
     <img src="https://i.imgur.com/Zkykv9m.png">
@@ -38,7 +38,7 @@
 
 **위 그림은 쉽게 설명해보면 카드 결제(상위 수준 정책)가 신한 카드 결제(하위 수준)에 의존하고 있습니다.** 그렇다면 이것이 갖는 단점이 무엇인지 아래 예제 코드를 통해서 확인해보겠습니다.
 
-## 지나친 의존 관계
+#### 지나친 의존 관계
 
 ```java
 class PaymentController {
@@ -62,7 +62,7 @@ class ShinhanCardPaymentService {
 ```
 카드 결제 기능(상위 정책)이 신한 카드 결제(하위 정책)에 지나치게 의존적입니다. 그 결과 위처럼 신한 카드사의 카드 결제의 JSON의 키값만 변경 시 컨트롤러, 또 그 값을 넘겨주는 프론트엔드 까지 변경까지 영향을 미치게 됩니다. 이렇듯 지나친 의존 관계는 많은 변경 포인트를 유발합니다.
 
-## 확장에 유연하지 못함
+#### 확장에 유연하지 못함
 
 ```java
 @RequestMapping(value = "/anti/payment", method = RequestMethod.POST)
@@ -80,7 +80,7 @@ public void pay(@RequestBody CardPaymentDto.PaymentRequest req){
 
 
 
-# DIP 준수
+## DIP 준수
 
 <p align="center">
     <img src="https://i.imgur.com/TdGYl8n.png">
@@ -117,7 +117,7 @@ public class ShinhanCardPaymentService implements CardPaymentService {
 
 또 하위 정책의 신한 카드, 우리 카드가 변경되더라도 PaymenrService 인터페이스를 의존하고 있으므로 확장에 열려 있고 변경에는 닫혀 있는 OCP를 준수하게 됩니다.
 
-# 결론
+## 결론
 그렇다면 모든 곳에 대해서 세부 구현체를 바라보는 것이 아니라 인터페이스로 바라보는 것이 올바른 것일까요? **제 개인적인 생각은 그렇지 않다 입니다.**
 
 모든 변경사항에 대응해서 설계한다는 것은 현실적으로 힘듭니다. 위 요구 사항처럼 지속해서 결제 가능한 카드사가 추가된다는 요구사항, 경험을 통해서 예측할 수 있는 상황들에 적용하는 것이 바람직하다고 생각합니다. 
@@ -125,6 +125,6 @@ public class ShinhanCardPaymentService implements CardPaymentService {
 또 개인적인 생각으로는 인프라스트럭처에 대해서는 인터페이스로 바라보는 것이 적절하다고 생각합니다. 인프라스트럭처는 언제든지 대체될 수 있는 영역이기 때문에 이런 영역에 대해서는 인터페이스로 바라보게 설계해서 의존성을 역전 시키는 것이 좋을 거 같습니다.
 
 
-# 참고
+## 참고
 * [도서 - 개발자가 반드시 정복해야 할 객체 지향과 디자인 패턴](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&barcode=9788969090010)
 * [Youtube 강의(백명석님)](https://www.youtube.com/user/codetemplate/videos)

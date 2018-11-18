@@ -8,7 +8,7 @@
 대표적인 OCP의 핵심 개념입니다. SOLID를 처음 접하는 분들은 다소 어렵게 느껴지는 것들을 최대한 쉽게 풀어보겠습니다.
 
 
-## 용어 정리
+## 용어 풀이
 > **확장 이란 ?**
 > 
 >새로운 타입을 추가함으로써 새로운 기능을 추가할 수 있다. 즉 확장이란 새로운 타입을 추가함으로써 새로운 기능(요구사항)을 구현한다. **확장에는 열려 있다는 것은 새로운 타입(클래스)을 추가함으로써 기능(요구사항)을 확장하는 것이다..**
@@ -17,21 +17,21 @@
 > 
 > 확장이 발생했을 때 상위 레벨이 영향을 미치지 않아야 한다. **확장(새로운 클래스)이 발생했을 때 해당 코드를 호출하는 쪽에서 변경이 발생하지 않다면 변경에 닫혀 있다는 것이다.**
 
-# 요구사항
+## 요구사항
 * 카드 결제 시스템을 만들어야 한다.
 * 현재 지원하는 카드는 신한 카드 하나뿐이다.
 * 이제 우리 카드 결제가 추가되어 구현해야 한다.
 * 앞으로도 카드는 지속해서 추가될 예정이다.
 
 
-# OCP를 준수하기 위한 실패 과정들
+## OCP를 준수하기 위한 실패 과정들
 <p align="center">
     <img src="https://i.imgur.com/a21midG.png">
 </p>
 
 기존 PamentController에서 ShinhanCardPaymentService를 의존해서 신한 카드 결제를 진행 헸습니다. 이제 우리 은행 카드결제가 추가되었으니 아래 컨트롤러처럼 기존 신한 카드를 건드리지(변경에 닫혀있다) 않고 우리 카드를 추가하는 가장 쉬운 방법은 아래처럼 컨트롤러를 각각 구성하는 방법입니다. 물론 OCP를 위반하는 코드입니다.
 
-## 카드사 마다 API
+#### 카드사 마다 API
 
 ```java
 @RequestMapping(value = "/ocp/anti/payment/shinhan", method = RequestMethod.POST)
@@ -47,7 +47,7 @@ public void pay(@RequestBody WooriCardDto.PaymentRequest req){
 해당 구조는 매우 좋지 않습니다. 카드사가 추가될 때 마다 API를 추가적으로 만들어야 합니다. 이는 확장에 좋지 않은 코드 뿐만 아니라 올바른 카드사의 API를 찾기위한 코드가 필요하게 됩니다.
 
 
-## 공통 Request로 API 통일
+#### 공통 Request로 API 통일
 
 ```java
 public static class PaymentRequest {
@@ -82,7 +82,7 @@ public void pay(@RequestBody CardPaymentDto.PaymentRequest req){
 
 그 밖에도 추가될 카드의 결제를 담당하는 XXXPaymentService 클래스들이 지속해서 의존성 이루어집니다. 그 결과 PaymentController는 컨트롤러 계층임에도 너무 많은 책임을 갖게 되며, **확장에 어렵고, 변경에 취약한 구조가 됩니다.**
  
-# OCP 준수
+## OCP 준수
 
 <p align="center">
     <img src="https://i.imgur.com/TdGYl8n.png">
@@ -126,6 +126,6 @@ public class WooriCardPaymentService implements CardPaymentService {
 
 
 
-# 참고
+## 참고
 * [도서 - 개발자가 반드시 정복해야 할 객체 지향과 디자인 패턴](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&barcode=9788969090010)
 * [Youtube 강의(백명석님)](https://www.youtube.com/user/codetemplate/videos)

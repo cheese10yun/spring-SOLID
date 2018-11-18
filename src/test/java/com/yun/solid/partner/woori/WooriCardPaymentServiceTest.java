@@ -8,7 +8,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
@@ -34,5 +33,19 @@ public class WooriCardPaymentServiceTest {
         wooriCardPaymentService.pay(request);
 
         verify(wooriCardApi, atLeastOnce()).pay(any());
+    }
+
+    @Test
+    public void payOverseas() {
+
+        final CardPaymentDto.PaymentRequest request = CardPaymentDto.PaymentRequest.builder()
+                .cardNumber("card")
+                .csv("csv")
+                .type(CardType.WOORI)
+                .build();
+
+        wooriCardPaymentService.payOverseas(request);
+
+
     }
 }

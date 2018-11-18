@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -72,11 +71,26 @@ public class PaymentControllerTest {
         request.andExpect(status().isOk());
     }
 
+
+    @Test
+    public void Overseas_payment_Shinhan() throws Exception {
+        given(cardPaymentFactory.getType(any())).willReturn(shinhanCardPaymentService);
+        final String json = "{\n" +
+                "  \"cardNumber\":\"str\",\n" +
+                "  \"csv\":\"str\",\n" +
+                "  \"type\": \"SHINHAN\"\n" +
+                "}";
+
+        final ResultActions request = request("overseas-payment", json);
+        request.andExpect(status().isOk());
+    }
+
     private ResultActions request(final String url, String json) throws Exception {
         return mockMvc.perform(post("/" + url)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json))
                 .andDo(print());
     }
+
 
 }

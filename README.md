@@ -9,7 +9,7 @@ SOLID 다소 딱딱하고 장황할 설명으로 인해서 이해하지 못한 �
 
 
 # 목차
-* [단일 책임의 원칙: Single Responsibility Principle 작업중 ..]()
+* [단일 책임의 원칙: Single Responsibility Principle](https://github.com/cheese10yun/spring-SOLID/blob/master/docs/SRP.md)
 * [개방 폐쇄의 원칙: Open Close Principle](https://github.com/cheese10yun/spring-SOLID/blob/master/docs/OCP.md)
 * [리스코브 치환의 원칙: The Liskov Substitution Principle 작업중...]()
 * [인터페이스 분리의 원칙: Interface Segregation Principle 작업중...]()

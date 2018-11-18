@@ -13,8 +13,14 @@ public class WooriCardPaymentService implements CardPaymentService {
 
     @Override
     public void pay(CardPaymentDto.PaymentRequest req) {
+        //우리 카드 결제 API...
         final WooriCardDto.PaymentRequest paymentRequest = buildPayment(req);
         wooriCardApi.pay(paymentRequest);
+    }
+
+    @Override
+    public void payOverseas(CardPaymentDto.PaymentRequest req) {
+        // 우리 카드 결제는 해외 결제 기능이 없음...
     }
 
     private WooriCardDto.PaymentRequest buildPayment(CardPaymentDto.PaymentRequest req) {
