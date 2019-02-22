@@ -6,11 +6,8 @@ install: true
 
 script: mvn install
 
-before_install:
- - mvn clean
-
 branches:
- only:
+  only:
     - master
 
 after_success:
