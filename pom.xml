@@ -51,6 +51,7 @@
 
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
+                <version>4.3.0</version>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <configuration>
                     <repoToken>qLElnlAkIz2OQSOdbjqDgHYrDxXgEgQp1</repoToken>
@@ -58,16 +59,19 @@
             </plugin>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <configuration>
-                    <format>xml</format>
-                    <maxmem>256m</maxmem>
-                    <!-- aggregated reports for multi-module projects -->
-                    <aggregate>true</aggregate>
-                    <check/>
-                </configuration>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.3</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
         </plugins>
     </build>
 
