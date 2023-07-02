@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.com/cheese10yun/spring-SOLID.svg?branch=master)](https://travis-ci.com/cheese10yun/spring-SOLID)
 [![Coverage Status](https://coveralls.io/repos/github/cheese10yun/spring-SOLID/badge.svg?branch=master)](https://coveralls.io/github/cheese10yun/spring-SOLID?branch=master)
 [![codecov](https://codecov.io/gh/cheese10yun/spring-SOLID/branch/master/graph/badge.svg)](https://codecov.io/gh/cheese10yun/spring-SOLID)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fcheese10yun%2Fspring-SOLID&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 # Spring 에제로 보는 SOLID 
 SOLID 다소 딱딱하고 장황할 설명으로 인해서 이해하지 못한 부분들을 최대한 쉽게 풀어 이야기해 보고 Spring 기반 베이스로 코드를 작성해서 실무에서 사용 가능한 최소한의 수준을 제공하려 노력했습니다. 부족한 저의 경험이 누군가에게 도움이 되기를 기원합니다.
